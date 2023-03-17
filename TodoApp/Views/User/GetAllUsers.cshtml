@@ -1,0 +1,40 @@
+﻿@model List<User>
+
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<H1>Get All Users</H1>
+
+<a asp-action="Create" asp-controller="User" type="button" class="btn btn-primary">Add User</a>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Status</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <th scope="row">@user.Id</th>
+                <td>@user.Name</td>
+                <td>@user.Email</td>
+                <td>@user.Status</td>
+                <td><a asp-controller="User" asp-action="Details" asp-route-userId="@user.Id" type="button" class="btn btn-success">View</a></td>
+                <td><a asp-controller="User" asp-action="Update" asp-route-userId="@user.Id" type="button" class="btn btn-warning">Edit</a></td>
+                <td><a asp-controller="User" asp-action="Delete" asp-route-userId="@user.Id" type="button" class="btn btn-danger">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
